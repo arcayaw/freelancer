@@ -1,3 +1,5 @@
+
+/* custom properties se pueden usar tipo variables para CSS*/
 :root {
     --oscuro: #212121;
     --primary: #ffc107;
@@ -34,7 +36,7 @@ body {
 */
 
 
-/*el flexbox siempre se lo aplico al contenedor padre*/
+
 
 h1,
 h2,
@@ -53,6 +55,12 @@ h3 {
     font-size: 1.6rem;
 }
 
+p{
+    font-size: 1.4rem;
+    line-height: 2;
+    text-align: center;
+}
+/*el flexbox siempre se lo aplico al contenedor padre*/
 .site-header nav {
     max-width: 90%;
     margin: 0 auto;
@@ -60,8 +68,9 @@ h3 {
     /*habilito flex con display: flex*/
     display: flex;
     /*coloco los elementos de arriba hacia abajo en el flex, tambien existe column reverse, row(que es el normal),  reverse row que ellev el primer item al ultimo lugar*/
-    flex-direction: column;
-    /*el flex direction ignor al justify content, por eso uso entonces align-items center*/
+    justify-content: flex-start;
+    flex-direction: column; /* ordena los items en columnas*/
+    /*el flex direction ignores all justify content, por eso uso entonces align-items center*/
     align-items: center;
 }
 
@@ -160,10 +169,100 @@ h3 {
     margin: 3rem auto;
 }
 
+
+
+@media (min-width:760px){
+    .contenedor-servicios{
+        display: flex;
+        justify-content: space-between;
+        margin:2 2 rem;
+    }
+    .servicio{
+        flex: 0 0 calc(33.3% -1rem);
+    }
+}
+
+
+.servicio{
+    display: flex;
+    flex-direction:  column;
+    align-items:  center;
+}
 .iconos {
-    max-width: 4rem;
-    text-align: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
     background-color: var(--primary);
-    padding: 1rem;
+    display: flex;
+    justify-content: space-evenly; /* *centra vertical */
+    
+    align-items: center; /* *centra vertical */
+    margin: 0 auto;
+    margin-top:  2rem;
+}
+
+.iconos{
+    font-size: 2rem;
+    
+
+}
+
+form{
+    background-color: cadetblue;/*en el curso crearon una variable para color pero me da paja*/
+    padding: 2rem;
     border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+form legend{
+    text-align: center;
+    font-size:  2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}   
+
+@media (min-width:768px){
+    form{
+        max-width: 800px;
+        margin: 3rem auto;
+    } 
+    .contenedor-campos{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .campo {
+        flex: 0 0 calc(50% - 1rem);
+    }
+}
+.campo {
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+.campo label{
+    flex: 0 0 90px;
+    margin-right: 1rem;
+}
+.campo input{
+    flex: 1; /*! flex 1 es el valor de crecimiento*/
+    height: 2rem;
+}
+
+.campo textarea{
+    flex: 1; /*! flex 1 es el valor de crecimiento*/
+    height: 6rem;
+}
+/*TODO falta revisar porque los inputs no quedan uno al lado del otro, puede ser terma del media query que no este bien configurado */
+
+.w-100{
+    flex: 0 0 100%;
+}
+.boton:hover{
+    cursor: pointer;/*mustra la manito*/
+}
+
+.enviar{ /* * Centro el boton*/
+    display: flex;
+    justify-content: center;
 }
